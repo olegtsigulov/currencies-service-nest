@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  currecnies-service:
+    container_name: currecnies-service
+    build: .
+    ports:
+      - 8001:8001
+    command: npm run start
+    networks:
+      - webnet
+    depends_on:
+      - mongo
+  mongo:
+    container_name: mongo
+    image: mongo:4.2.6
+    networks:
+      - webnet
+    volumes:
+      - mongodb:/data/db
+    command: mongod
+networks:
+  webnet:
+volumes:
+  mongodb:
