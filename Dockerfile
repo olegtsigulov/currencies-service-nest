@@ -9,5 +9,8 @@ COPY ./package-lock.json ./
 
 RUN npm install
 COPY . .
+
+EXPOSE 8001
+
 RUN npm run build
 CMD ["npm", "run", "start:prod"]
